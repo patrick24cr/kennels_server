@@ -1,3 +1,6 @@
+import random
+from views.location_requests import LOCATIONS
+
 EMPLOYEES = [
     {
         "id": 1,
@@ -35,3 +38,24 @@ def get_single_employee(id):
             requested_employee = employee
 
     return requested_employee
+
+def create_employee(employee):
+    # Get the id value of the last animal in the list
+    max_id = EMPLOYEES[-1]["id"]
+
+    # Add 1 to whatever that number is
+    new_id = max_id + 1
+    
+    max_locationId = LOCATIONS[-1]["id"]
+    new_locationId = random.randint(1, max_locationId)
+
+    # Add an `id` property to the animal dictionary
+    employee["id"] = new_id
+    
+    employee["locationId"] = new_locationId
+
+    # Add the animal dictionary to the list
+    EMPLOYEES.append(employee)
+
+    # Return the dictionary with `id` property added
+    return employee
