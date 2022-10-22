@@ -156,7 +156,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             self.wfile.write(f"{new_customer}".encode())
 
         # Encode the new animal and send in response
-        
+
     def do_DELETE(self):
         # Set a 204 response code
         self._set_headers(204)
@@ -167,19 +167,19 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "animals":
             delete_animal(id)
-            
+
         if resource == "employees":
             delete_employee(id)
-            
+
         if resource == "locations":
             delete_location(id)
-            
+
         if resource == "customers":
             delete_customer(id)
 
         # Encode the new animal and send in response
         self.wfile.write("".encode())
-        
+
     def do_PUT(self):
         self._set_headers(204)
         content_len = int(self.headers.get('content-length', 0))
@@ -192,18 +192,18 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "animals":
             update_animal(id, post_body)
-            
+
         if resource == "customers":
             update_customer(id, post_body)
-            
+
         if resource == "employees":
             update_employee(id, post_body)
-            
+
         if resource == "locations":
             update_location(id, post_body)
 
         # Encode the new animal and send in response
-        self.wfile.write("".encode())
+        self.wfile.write("hi".encode())
 
 
 # This function is not inside the class. It is the starting
