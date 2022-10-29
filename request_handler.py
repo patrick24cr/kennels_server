@@ -148,7 +148,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         post_body = json.loads(post_body)
 
         # Parse the URL
-        (resource) = self.parse_url(self.path)
+        (resource, id) = self.parse_url(self.path)
 
         # Initialize new animal
         new_animal = None
@@ -174,8 +174,6 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "customers":
             new_customer = create_customer(post_body)
             self.wfile.write(f"{new_customer}".encode())
-
-        # Encode the new animal and send in response
 
     def do_DELETE(self):
         # Set a 204 response code
